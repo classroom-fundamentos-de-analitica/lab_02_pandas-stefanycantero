@@ -177,10 +177,9 @@ def pregunta_10():
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     dataframe = tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str)))).reset_index()
-    dataframe.rename(columns={'_c1': '_c0'}, inplace=True)
+    dataframe.rename(columns={'_c2': '_c1', '_c1': '_c0'}, inplace=True)
     dataframe = dataframe.set_index('_c0')
-    dataframe.rename(columns={'_c2': '_c1'}, inplace=True)
-    return dataframe
+    return dataframe.reset_index()
 
 def pregunta_11():
     """
@@ -217,11 +216,10 @@ def pregunta_12():
     38   38                    eee:0,fff:9,iii:2
     39   39                    ggg:3,hhh:8,jjj:5
     """
-    dataframe = tbl2.groupby('_c0').apply(lambda x: ','.join(x['_c5a'] + ':' + x['_c5b'].astype(str)),
+    dataframe = tbl2.groupby('_c0').apply(lambda x: ','.join(sorted(x['_c5a'] + ':' + x['_c5b'].astype(str))),
                                           include_groups=False).reset_index()
     dataframe.rename(columns={0: '_c5'}, inplace=True)
     return dataframe
-
 
 def pregunta_13():
     """
