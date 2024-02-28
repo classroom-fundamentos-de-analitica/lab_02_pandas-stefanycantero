@@ -181,8 +181,6 @@ def pregunta_10():
     dataframe.set_index('_c0')
     return dataframe
 
-print(pregunta_10())
-
 def pregunta_11():
     """
     Construya una tabla que contenga _c0 y una lista separada por ',' de los valores de
