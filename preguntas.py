@@ -178,8 +178,10 @@ def pregunta_10():
     """
     dataframe = tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str)))).reset_index()
     dataframe.rename(columns={'_c2': '_c1', '_c1': '_c0'}, inplace=True)
-    dataframe = dataframe.set_index('_c0')
-    return dataframe.reset_index()
+    dataframe.set_index('_c0')
+    return dataframe
+
+print(pregunta_10())
 
 def pregunta_11():
     """
