@@ -177,8 +177,7 @@ def pregunta_10():
     4   E  1:1:2:3:3:4:5:5:5:6:7:8:8:9
     """
     dataframe = tbl0.groupby('_c1')['_c2'].apply(lambda x: ':'.join(sorted(x.astype(str)))).reset_index()
-    dataframe.rename(columns={'_c2': '_c1', '_c1': '_c0'}, inplace=True)
-    dataframe = dataframe.set_index('_c0')
+    dataframe = dataframe.set_index('_c1')
     return dataframe
 
 def pregunta_11():
